@@ -50,8 +50,8 @@
 		<tr>
 			<th></th>
 			<td>
-				<input type="submit" value="登録">
 				<input type="hidden" name="id" value="0"><!-- 新規登録のｉｄは０ -->
+				<input type="submit" value="登録">
 			</td>
 		</tr>
 	</table>
