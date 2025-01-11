@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+集計の設定はここ
 </body>
 </html>
