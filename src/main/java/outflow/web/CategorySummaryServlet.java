@@ -1,6 +1,7 @@
 package outflow.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
+ * 分類別集計
  * Servlet implementation class CategorySummaryServlet
  */
 @WebServlet("/CategorySummaryServlet")
@@ -20,15 +22,24 @@ public class CategorySummaryServlet extends HttpServlet {
      */
     public CategorySummaryServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		//DB処理
+		try(OutflowMonitorDAO dao = new OutflowMonitorDAO();) {
+			List<OutflowMonitor> dto = dao.aggregateByCategory();
+			//結果を格納
+			request.setAttribute("summary", dto);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+		
+		//フォワード
+		request.getRequestDispatcher("/result.jsp").forward(request, response);
 	}
 
 	/**

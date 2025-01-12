@@ -13,6 +13,8 @@ public class OutflowMonitor implements Serializable{
 	private String category;		//分類名
 	private String note = null;		//品目名
 	private int paid;				//金額
+	private int totalcount;			//合計件数
+	private int totalpaid;			//合計金額
 	
 	private String inputPaymentdate;//入力された購入日
 	private String outputPaymentdate;//DBから取り出した購入日
@@ -95,6 +97,31 @@ public class OutflowMonitor implements Serializable{
 	public void setPaid(int paid) {
 		this.paid = paid;
 	}
+	/**
+	 * @return totalcount
+	 */
+	public int getTotalcount() {
+		return totalcount;
+	}
+	/**
+	 * @param totalcount セットする totalcount
+	 */
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
+	/**
+	 * @return totalpaid
+	 */
+	public int getTotalpaid() {
+		return totalpaid;
+	}
+	/**
+	 * @param totalpaid セットする totalpaid
+	 */
+	public void setTotalpaid(int totalpaid) {
+		this.totalpaid = totalpaid;
+	}
+	
 	
 	/**
 	 * @return inputPaymentdate
@@ -110,7 +137,6 @@ public class OutflowMonitor implements Serializable{
 		//sql.Date型へキャストしinputPaymentdateに格納
 		DateFormatter(inputPaymentdate);
 	}
-	
 	/**
 	 * @return outputPaymentdate
 	 */

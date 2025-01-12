@@ -50,11 +50,11 @@ public class OutflowMonitorDAO extends DAO{
 		//結果を格納
 		OutflowMonitor dto = new OutflowMonitor();
 		if(rs.next()) {
-		dto.setId(rs.getInt("id"));
-		dto.setPaymentdate(rs.getDate("payment_date"));
-		dto.setCategorynum(rs.getInt("categorynum"));
-		dto.setNote(rs.getString("note"));
-		dto.setPaid(rs.getInt("paid"));
+			dto.setId(rs.getInt("id"));
+			dto.setPaymentdate(rs.getDate("payment_date"));
+			dto.setCategorynum(rs.getInt("categorynum"));
+			dto.setNote(rs.getString("note"));
+			dto.setPaid(rs.getInt("paid"));
 		}
 		return dto;
 	}
@@ -168,4 +168,29 @@ public class OutflowMonitorDAO extends DAO{
 
   /*-- 全件削除 --*/
   /*-- 分類別集計 --*/
+	public List<OutflowMonitor> aggregateByCategory() throws Exception {
+		List<OutflowMonitor> returnSummary = new ArrayList<OutflowMonitor>();
+
+		//SQL文
+		String sql = "SELECT cl.category,"
+					+" COUNT(id) AS totalcount,"
+					+" IFNULL(SUM(paid), 0) AS totalpaid"
+					+" FROM payment_list AS pl LEFT OUTER JOIN category_list AS cl"
+					+" ON pl.categorynum = cl.categorynum"
+					+" GROUP BY cl.category";
+				
+		//SQLクエリ発行・結果の受取
+			PreparedStatement ps = getPreparedStatement(sql);
+			ResultSet rs = ps.executeQuery();
+		
+		//結果の格納
+		while(rs.next()) {
+			OutflowMonitor dto = new OutflowMonitor();
+			dto.setCategory(rs.getString("category"));
+			dto.setTotalcount(Integer.parseInt(rs.getString("totalcount")));
+			dto.setTotalpaid(Integer.parseInt(rs.getString("totalpaid")));
+			returnSummary.add(dto);
+		}
+		return returnSummary;
+	}
 }
