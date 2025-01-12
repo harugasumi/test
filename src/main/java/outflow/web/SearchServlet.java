@@ -30,16 +30,16 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//SQL用DAO生成
+		//DB処理
 		try(OutflowMonitorDAO dao = new OutflowMonitorDAO()){
 			List<OutflowMonitor> list = dao.paymentList();//全テーブル取得
 			
-			request.setAttribute("paymentList", list);//リクエスト属性の設定（フォワードの準備）
+			request.setAttribute("paymentList", list);//ｌｉｓｔをリクエストパラメータへ格納
 		}catch(Exception e) {
 			throw new ServletException(e);
 		}
 		
-		//履歴一覧をフォワード
+		//履歴一覧画面へフォワード
 		RequestDispatcher rd = request.getRequestDispatcher("/list.jsp");
 		rd.forward(request, response);
 	}

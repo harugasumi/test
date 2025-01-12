@@ -9,6 +9,13 @@
 </head>
 <body>
 	<h1>履歴一覧</h1>
+	
+	<form action="entry_home.jsp" method="get">
+		<input type="submit" value="新規登録する"/>
+	</form>
+	
+	<br>
+	
 	<table border="1">
 		<tr>
 			<th>番号</th>
@@ -46,7 +53,7 @@
 	
 	<br>
 	<form action="entry_home.jsp" method="get">
-		<input type="submit" value="戻る"/>
+		<input type="submit" value="ホームへ戻る"/>
 	</form>
 	
 	<br>

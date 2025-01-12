@@ -42,7 +42,7 @@ public class DetailServlet extends HttpServlet {
 		
 		//DTOをリクエストパラメータへ格納
 		request.setAttribute("SelectedId", dto);
-		
+		//更新画面へフォワード
 		request.getRequestDispatcher("/edit_entry.jsp").forward(request, response);
 	}
 

@@ -5,18 +5,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>更新</title>
 </head>
 <body>
-	<h1>今日、なに買った？</h1>
+	<h1>更新しますか？</h1>
 	
 	<!-- 今日の日付が自動で表示 -->
-	<!-- RegisterServletから戻ってきたら、「ｉｄ番に登録しました」と表示する -->
 	<h2>日付</h2>
 	<%
 	OutflowMonitor dto = (OutflowMonitor)request.getAttribute("SelectedId");
 	pageContext.setAttribute("dto", dto);
 	%>
+	
+	<form action="DeleteServlet" method="post">
+		<input type="hidden" name="id" value="${dto.id}">
+		<input type="submit" value="削除する">
+	</form>
+	
+	<br>
 	
 	<form action="RegisterServlet" method="post">
 	<table>
@@ -53,15 +59,10 @@
 			<!-- 正の整数(1~100万)のみ受け付ける -->
 			<td><input type="number" name="paid" value="${dto.paid}" step="1" min="1" max="1000000"></td>
 		</tr>
-		
-		<tr>
-			<th></th>
-			<td>
-				<input type="hidden" name="id" value="${dto.id}">
-				<input type="submit" value="更新する">
-			</td>
-		</tr>
 	</table>
+		<br>
+		<input type="hidden" name="id" value="${dto.id}">
+		<input type="submit" value="更新する">
 	</form>
 	
 	<br>

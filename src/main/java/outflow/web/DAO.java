@@ -34,7 +34,7 @@ public class DAO implements AutoCloseable{
 		return connection;
 	}
 	
-	//SQL実行部
+	//SQL発行部
 	public PreparedStatement getPreparedStatement(String sql) throws Exception {
 		return getConnection().prepareStatement(sql);
 	}
