@@ -73,7 +73,7 @@
 	
 	<br>
 	
-	<form action="setting.jsp" method="post">
+	<form action="CategorySummaryServlet" method="post">
 		<input type="submit" value="集計を見る">
 	</form>
 	

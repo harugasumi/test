@@ -53,6 +53,8 @@
 	<br>
 	<form action="entry_home.jsp" method="post"><input type="submit" value="ホームへ戻る"/></form><br>
 	<form action="CategorySummaryServlet" method="post"><input type="submit" value="集計を見る"></form><br>
+<!-- 	
 	<form action="AllDeleteServlet" method="post"><input type="submit" value="一括削除"/></form><br>
+-->
 </body>
 </html>

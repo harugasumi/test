@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * 新規登録・履歴の修正
+ * 新規登録・履歴の更新
  * 
  * Servlet implementation class RegisterServlet
  */
