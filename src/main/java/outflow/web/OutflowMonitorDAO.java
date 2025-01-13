@@ -89,7 +89,7 @@ public class OutflowMonitorDAO extends DAO{
   /*-- 要素別レコード取得 --*/
 //要素：購入日（限定・範囲指定）、分類番号（限定・複数）、金額（降順・昇順・以上・以下）
 //各要素別のリストを日付順で表示。日付別の場合は分類番号順に表示。
-//	public void filtereList() {}
+
 	
   /*-- 新規登録 --*/
 	public int registerInsert(OutflowMonitor dto) throws Exception{
